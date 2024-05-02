@@ -35,7 +35,7 @@ st.sidebar.markdown("""
 """)
 
 keyword_to_response = {
-    'präventive maßnahmen diskutieren:|präventive maßnahmen diskutieren': "Verstehe. Ich empfehle Ihnen, die tägliche Salzaufnahme auf maximal 5 Gramm zu beschränken, was etwa einem Teelöffel entspricht. Wie ist außerdem das Verhältnis von Obst, Gemüse und Fetten in Ihrer täglichen Ernährung?",
+    'präventive maßnahmen diskutieren:|präventive maßnahmen diskutieren': "Verstanden. Ich würde gerne mehr über Ihre Lebensgewohnheiten erfahren. Wie ernähren Sie sich? Wie viel Salz nehmen Sie beispielweise täglich zu sich?",
     "empfohlene salzaufnahme:|empfohlene salzaufnahme": "Verstehe. Ich empfehle Ihnen, die tägliche Salzaufnahme auf maximal 5 Gramm zu beschränken, was etwa einem Teelöffel entspricht. Wie ist außerdem das Verhältnis von Obst, Gemüse und Fetten in Ihrer täglichen Ernährung?",
     "empfehlungen für gemüse und obst:|empfehlungen für gemüse und obst": "Ich verstehe, und empfehle Ihnen, mehr frisches Gemüse und Obst zu essen. Bei der Auswahl von Fleischprodukten sollten Sie sich auf hochwertige Fette konzentrieren. Bewegen Sie sich regelmäßig oder treiben Sie Sport?",
     "empfehlungen zur trainingshäufigkeit:|empfehlungen zur trainingshäufigkeit": "Verstanden. Ich würde Ihnen empfehlen, drei Mal pro Woche für 30 bis 45 Minuten ein regelmäßiges Ausdauertraining zu absolvieren. Gibt es bestimmte Zeiten, die für Sie am besten wären, um das Training in Ihren Alltag einzuplanen? Beispielsweise nach der Arbeit?",
