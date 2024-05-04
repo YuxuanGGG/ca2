@@ -47,6 +47,8 @@ st.sidebar.markdown("""
     - Fühlt sich oft nach der Arbeit angestrengt
 """)
 
+
+
 keyword_to_response = {
     'präventive maßnahmen diskutieren:|präventive maßnahmen diskutieren': "Verstanden. Ich würde gerne mehr über Ihre Lebensgewohnheiten erfahren. Wie ernähren Sie sich? Wie viel Salz nehmen Sie beispielweise täglich zu sich?",
     "empfohlene salzaufnahme:|empfohlene salzaufnahme": "Verstehe. Ich empfehle Ihnen, die tägliche Salzaufnahme auf maximal 5 Gramm zu beschränken, was etwa einem Teelöffel entspricht. Wie ist außerdem das Verhältnis von Obst, Gemüse und Fetten in Ihrer täglichen Ernährung?",
@@ -71,9 +73,7 @@ if "last_input" not in st.session_state:
     st.session_state.last_input = ""
     
 if prompt := st.chat_input("Bitte geben Sie Ihren Text im richtigen Format ein."):
-    # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
-    # Display user message in chat message container
     with st.chat_message("user"):
         st.markdown(prompt)
 
