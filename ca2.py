@@ -1,6 +1,19 @@
 import streamlit as st
 import time
 import re
+import logging
+import logging.handlers
+
+def setup_papertrail_logging():
+    papertrail_handler = logging.handlers.SysLogHandler(address=('logs5.papertrailapp.com', 20304))
+    formatter = logging.Formatter('%(asctime)s %(levelname)s: %(message)s', datefmt='%b %d %H:%M:%S')
+    papertrail_handler.setFormatter(formatter)
+    logger = logging.getLogger()
+    logger.setLevel(logging.INFO)
+    logger.addHandler(papertrail_handler)
+    return logger
+
+logger = setup_papertrail_logging()
 
 st.sidebar.header("Hinweis zu den Stichwörtern:")
 st.sidebar.markdown("""
@@ -45,24 +58,26 @@ keyword_to_response = {
 
 st.title("Medical AI Chatbot")
 
-# Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = [
         {"role": "assistant", "content": "Guten Tag! Wir wissen, dass die familiäre Vorgeschichte die Gesundheit einer Person beeinflussen kann. Die Anpassung von Lebensgewohnheiten ist der Schlüssel zur Krankheitsprävention. Hat Ihre Familie ähnliche Gesundheitsprobleme? Haben Sie darüber nachgedacht, wie Sie durch die Verbesserung Ihrer täglichen Gewohnheiten Ihre Gesundheit optimieren können?"}
     ]
 
-# Display chat messages from history on app rerun
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-# Accept user input
+if "last_input" not in st.session_state:
+    st.session_state.last_input = ""
+    
 if prompt := st.chat_input("Bitte geben Sie Ihren Text im richtigen Format ein."):
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
     # Display user message in chat message container
     with st.chat_message("user"):
         st.markdown(prompt)
+
+    logger.info(f"User input logged: {prompt}")  # 标注 - 添加这行代码来调用记录函数
 
     found_response = False
     for pattern, response in keyword_to_response.items():
@@ -78,15 +93,10 @@ if prompt := st.chat_input("Bitte geben Sie Ihren Text im richtigen Format ein."
 
     current_text = ""
     for word in assistant_response.split():
-        # Update the placeholder with the current text plus the new word
         current_text += word + " "
         response_placeholder.text(current_text)
-        # Delay between words to simulate typing
         time.sleep(0.05)  # Delay for 0.5 seconds between words
     response_placeholder.empty()
-    # Display assistant response in chat message container
     with st.chat_message("assistant"):
         st.markdown(assistant_response)
-    # Add assistant response to chat history
     st.session_state.messages.append({"role": "assistant", "content": assistant_response})
-
