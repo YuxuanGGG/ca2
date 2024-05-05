@@ -17,11 +17,11 @@ logger = setup_papertrail_logging()
 
 st.sidebar.header("Hinweis zu den Stichwörtern:")
 st.sidebar.markdown("""
-1. Präventive Maßnahmen diskutieren
-2. Empfohlene Salzaufnahme
-3. Empfehlungen für Gemüse und Obst
-4. Empfehlungen zur Trainingshäufigkeit
-5. Schrittweise Integration von Übungen
+1. Maßnahme
+2. Salz
+3. Ernährung
+4. Training
+5. Feierabend
 6. Abschluss
 """)
 
@@ -30,7 +30,7 @@ st.sidebar.markdown("""
 Stichwörter: Text.
 
 Zum Beispiel:
-- **Präventive Maßnahmen diskutieren**: Ich leide in meiner Familie an Bluthochdruck und hätte gerne Ratschläge zur Vorbeugung.
+- **Maßnahme**: Ich leide in meiner Familie an Bluthochdruck und hätte gerne Ratschläge zur Vorbeugung.
 """, unsafe_allow_html=True)
 
 st.sidebar.header("Persona: Jim")
@@ -50,11 +50,11 @@ st.sidebar.markdown("""
 
 
 keyword_to_response = {
-    'präventive maßnahmen diskutieren:|präventive maßnahmen diskutieren': "Verstanden. Ich würde gerne mehr über Ihre Lebensgewohnheiten erfahren. Wie ernähren Sie sich? Wie viel Salz nehmen Sie beispielweise täglich zu sich?",
-    "empfohlene salzaufnahme:|empfohlene salzaufnahme": "Verstehe. Ich empfehle Ihnen, die tägliche Salzaufnahme auf maximal 5 Gramm zu beschränken, was etwa einem Teelöffel entspricht. Wie ist außerdem das Verhältnis von Obst, Gemüse und Fetten in Ihrer täglichen Ernährung?",
-    "empfehlungen für gemüse und obst:|empfehlungen für gemüse und obst": "Ich verstehe, und empfehle Ihnen, mehr frisches Gemüse und Obst zu essen. Bei der Auswahl von Fleischprodukten sollten Sie sich auf hochwertige Fette konzentrieren. Bewegen Sie sich regelmäßig oder treiben Sie Sport?",
-    "empfehlungen zur trainingshäufigkeit:|empfehlungen zur trainingshäufigkeit": "Verstanden. Ich würde Ihnen empfehlen, drei Mal pro Woche für 30 bis 45 Minuten ein regelmäßiges Ausdauertraining zu absolvieren. Gibt es bestimmte Zeiten, die für Sie am besten wären, um das Training in Ihren Alltag einzuplanen? Beispielsweise nach der Arbeit?",
-    "schrittweise integration von übungen:|schrittweise integration von übungen": "Das verstehe ich. Ich empfehle Ihnen, die körperliche Aktivität schrittweise in Ihren Alltag zu integrieren. Kann ich Ihnen noch mit etwas anderem behilflich sein?",
+    'maßnahme:|maßnahme': "Verstanden. Ich würde gerne mehr über Ihre Lebensgewohnheiten erfahren. Wie ernähren Sie sich? Wie viel Salz nehmen Sie beispielweise täglich zu sich?",
+    "salz:|salz": "Verstehe. Ich empfehle Ihnen, die tägliche Salzaufnahme auf maximal 5 Gramm zu beschränken, was etwa einem Teelöffel entspricht. Wie ist außerdem das Verhältnis von Obst, Gemüse und Fetten in Ihrer täglichen Ernährung?",
+    "ernährung:|ernährung": "Ich verstehe, und empfehle Ihnen, mehr frisches Gemüse und Obst zu essen. Bei der Auswahl von Fleischprodukten sollten Sie sich auf hochwertige Fette konzentrieren. Bewegen Sie sich regelmäßig oder treiben Sie Sport?",
+    "training:|training": "Verstanden. Ich würde Ihnen empfehlen, drei Mal pro Woche für 30 bis 45 Minuten ein regelmäßiges Ausdauertraining zu absolvieren. Gibt es bestimmte Zeiten, die für Sie am besten wären, um das Training in Ihren Alltag einzuplanen? Beispielsweise nach der Arbeit?",
+    "feierabend:|feierabend": "Das verstehe ich. Ich empfehle Ihnen, die körperliche Aktivität schrittweise in Ihren Alltag zu integrieren. Kann ich Ihnen noch mit etwas anderem behilflich sein?",
     "abschluss:|abschluss": "Kein Problem. Bitte beachten Sie, dass meine Antworten nur Vorschläge sind. Ich wünsche Ihnen gute Gesundheit!"
 }
 
